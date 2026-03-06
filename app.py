@@ -1,4 +1,5 @@
 from flask import Flask, send_file
+import os
 
 app = Flask(__name__)
 
@@ -7,4 +8,5 @@ def index():
     return send_file('index.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
